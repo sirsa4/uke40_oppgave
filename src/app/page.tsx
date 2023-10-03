@@ -19,9 +19,7 @@ export default function Home() {
             <Cards />
             <Cards />
           </main>
-          <div className="border relative">
-            <Handlekurv />
-          </div>
+          <Handlekurv />
         </div>
         </HandleKurvContext>
       </div>
