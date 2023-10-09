@@ -39,10 +39,10 @@
         "./src/lib/*"
       ],
       "@/components/*": [
-        "./src/components/*"
+        "src/app/components/*"
       ],
       "@/layout/*": [
-        "./src/components/layout/*"
+        "src/app/components/layout/*"
       ],
       "@/types/*": [
         "./src/types/*"

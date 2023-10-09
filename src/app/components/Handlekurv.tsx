@@ -1,11 +1,13 @@
+
 import { useContext, useRef } from "react"
 
 import { kurvContext } from "@/context/HandleKurvContext"
 import CartItems from "./CartItems"
+import BuyItems from "./BuyItems"
 
-const Handlekurv = () => {
+const Handlekurv = ({cart}:any) => {
   const { modal, closeModal } = useContext(kurvContext)
-
+//console.log(itemsInCart);
   return (
     <>
       <dialog ref={modal} className="h-screen w-96">
@@ -16,11 +18,12 @@ const Handlekurv = () => {
           </button>
         </div>
         <section className="flex flex-col gap-4">
-          <CartItems />
+          <CartItems cart={cart} />
           <CartItems />
           <CartItems />
           <CartItems />
         </section>
+        <BuyItems />
       </dialog>
     </>
   )
