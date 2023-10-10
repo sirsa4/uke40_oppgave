@@ -15,8 +15,9 @@ export default function Home() {
   const [products, setProducts] = useState<SetStateAction>(undefined);
   const [itemsInCart, setItemsInCart] = useState([]);
   const [cart, setCart] = useState([]);
+
   const deleteProduct = (id: string) => {
-    setProducts(prev => prev.filter(res => res.id !== id));
+    setCart(prev => prev.filter(res => res.id !== id));
   }
   useEffect(()=>{
   //  setProducts(fakeproducts);
@@ -60,7 +61,7 @@ export default function Home() {
             return <Card key={product.id} {...product} onDelete={deleteProduct} sendToCart={sendToCart}  />
            })} 
           </Cards>
-         <Handlekurv cart={cart} />
+         <Handlekurv cart={cart} deleteProduct={deleteProduct} />
         </div>
         </HandleKurvContext>
       </div>

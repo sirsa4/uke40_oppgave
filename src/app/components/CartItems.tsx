@@ -1,6 +1,6 @@
 import React from "react"
 
-const CartItems = ({cart}:any) => {
+const CartItems = ({cart,deleteProduct}:any) => {
   
   
   return (
@@ -14,7 +14,7 @@ const CartItems = ({cart}:any) => {
         <button type="button">-</button>
         <span>1</span>
         <p>{`${item.title}(${item.price},-)`}</p>
-        <button type="button">X</button>
+        <button type="button" onClick={()=>deleteProduct(item.id)}>X</button>
       </article>
       }): null}
      

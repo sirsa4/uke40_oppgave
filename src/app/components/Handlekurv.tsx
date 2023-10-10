@@ -5,7 +5,7 @@ import { kurvContext } from "@/context/HandleKurvContext"
 import CartItems from "./CartItems"
 import BuyItems from "./BuyItems"
 
-const Handlekurv = ({cart}:any) => {
+const Handlekurv = ({cart, deleteProduct}:any) => {
   const { modal, closeModal } = useContext(kurvContext)
 //console.log(itemsInCart);
   return (
@@ -18,10 +18,7 @@ const Handlekurv = ({cart}:any) => {
           </button>
         </div>
         <section className="flex flex-col gap-4">
-          <CartItems cart={cart} />
-          <CartItems />
-          <CartItems />
-          <CartItems />
+          <CartItems cart={cart} deleteProduct={deleteProduct} />
         </section>
         <BuyItems />
       </dialog>
