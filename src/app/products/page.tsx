@@ -7,12 +7,12 @@ import Handlekurv from "@/components/Handlekurv"
 import HandleKurvContext from "@/context/HandleKurvContext"
 import { createProducts, faker } from "@/features/cart/createCart"
 import Card from "@/components/Card"
-import { useEffect, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { ProductType } from "@/features/cart/types"
 
 export default function Home() {
   const fakeproducts = Array.from(createProducts({count: 5, faker}).values());
-  const [products, setProducts] = useState(undefined);
+  const [products, setProducts] = useState<SetStateAction>(undefined);
   const [itemsInCart, setItemsInCart] = useState([]);
   const [cart, setCart] = useState([]);
   const deleteProduct = (id: string) => {
@@ -33,18 +33,19 @@ export default function Home() {
 
   const sendToCart = (item)=>{
     let isAlreadyInCart = false;
-    //dont push product into cart if it is already there
-    fakeproducts.forEach(product => {
-     // console.log(product.id + " "+item.id)
-      if(product.id === item.id && fakeproducts.length > 0){
+   
+    
+    cart.forEach(product => {
+   //  console.log(product)
+      if(product.id === item.id){
         isAlreadyInCart = true;
       }
-    });
-    if(isAlreadyInCart)
-      return ;
-      setCart([...cart,item])
     
-    console.log(cart);
+    });
+    if(!isAlreadyInCart)
+    setCart([...cart,item])
+    console.log(cart)
+   
    }
 
 
@@ -59,7 +60,7 @@ export default function Home() {
             return <Card key={product.id} {...product} onDelete={deleteProduct} sendToCart={sendToCart}  />
            })} 
           </Cards>
-          <Handlekurv cart={cart} />
+         <Handlekurv cart={cart} />
         </div>
         </HandleKurvContext>
       </div>

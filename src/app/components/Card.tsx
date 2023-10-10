@@ -9,7 +9,7 @@ type ProductType = {
   sendToCart: (item:any) => void
   onDelete?: (id: string) => void
 }
-
+"use client"
 const Card = (props: ProductType) => {
   const { id,title, description, category, price, onDelete, sendToCart } = props
 

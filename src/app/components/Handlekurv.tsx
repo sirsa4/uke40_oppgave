@@ -10,7 +10,7 @@ const Handlekurv = ({cart}:any) => {
 //console.log(itemsInCart);
   return (
     <>
-      <dialog ref={modal} className="h-screen w-96">
+      <dialog ref={modal} className="h-screen w-96 fixed top-0 right-0">
         <div className="flex justify-between p-4">
           <h3>Handlekurv</h3>
           <button type="button" onClick={closeModal}>
