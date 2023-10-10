@@ -1,9 +1,9 @@
 import React from 'react'
 
-const BuyItems = () => {
+const BuyItems = ({totalPrice}:{totalPrice: number}) => {
   return (
-    <div className="p-4">
-    <p>340</p>
+    <div className="pl-4 py-2">
+    <p>{totalPrice}</p>
     <button type="button">Kjøp</button>
   </div>
   )

@@ -11,10 +11,15 @@ import { SetStateAction, useEffect, useState } from "react"
 import { ProductType } from "@/features/cart/types"
 
 export default function Home() {
-  const fakeproducts = Array.from(createProducts({count: 5, faker}).values());
+  //dummy used before api route was created
+ // const fakeproducts = Array.from(createProducts({count: 5, faker}).values());
+ 
+ //state for products rendered in /products
   const [products, setProducts] = useState<SetStateAction>(undefined);
-  const [itemsInCart, setItemsInCart] = useState([]);
+  //state for products in cart
   const [cart, setCart] = useState([]);
+  //state for totall prices test
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const deleteProduct = (id: string) => {
     setCart(prev => prev.filter(res => res.id !== id));
@@ -26,11 +31,19 @@ export default function Home() {
       const response = await fetch("/api/products",{method: "get"});
       const result = await (response.json()) as {data: ProductType[]}
       setProducts(result.data);
-      console.log(result);
+     // console.log(result);
     }
     getProducts();
     //products?.forEach((item)=>console.log(item.id))
   },[])
+
+  useEffect(()=>{
+    const prices = cart.reduce((total,current)=>{
+      return total + current.price;
+    },0);
+    //console.log(prices)
+    setTotalPrice(prices)
+  },[cart]);
 
   const sendToCart = (item)=>{
     let isAlreadyInCart = false;
@@ -45,7 +58,7 @@ export default function Home() {
     });
     if(!isAlreadyInCart)
     setCart([...cart,item])
-    console.log(cart)
+   // console.log(cart)
    
    }
 
@@ -61,7 +74,7 @@ export default function Home() {
             return <Card key={product.id} {...product} onDelete={deleteProduct} sendToCart={sendToCart}  />
            })} 
           </Cards>
-         <Handlekurv cart={cart} deleteProduct={deleteProduct} />
+         <Handlekurv cart={cart} deleteProduct={deleteProduct} totalPrice={totalPrice} />
         </div>
         </HandleKurvContext>
       </div>

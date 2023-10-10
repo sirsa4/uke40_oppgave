@@ -7,7 +7,7 @@ const CartItems = ({cart,deleteProduct}:any) => {
     <div className="flex flex-col gap-4">
       
       {cart !== undefined && cart.length > 0? cart.map(item => {
-        console.log(item);
+       //  console.log(item);
         
         return  <article key={item.id} className="flex justify-around">
         <button type="button">+</button>

@@ -24,7 +24,7 @@ const Card = (props: ProductType) => {
         <h2 className="text-xl font-bold">{title}</h2>
         <p className="text-start">{description}</p>
         <p>{price}</p>
-        <button className="bg-[#5488c4] text-white py-1 px-2" onClick={()=>sendToCart(props)}>Legg i handlekurv</button>
+        <button className="bg-[#5488c4] text-white py-1 px-2 active:scale-90" onClick={()=>sendToCart(props)}>Legg i handlekurv</button>
       </div>
     </article>
   )

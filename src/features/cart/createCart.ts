@@ -51,6 +51,7 @@ export const faker: Faker = {
 
 
 const createProducts: CreateProductsType = ({existingProducts,count,faker})=>{
+  
     const products = new Map(existingProducts);
 
     if(products.size === 0 && count === 0){
