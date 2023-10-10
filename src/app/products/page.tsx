@@ -8,6 +8,7 @@ import HandleKurvContext from "@/context/HandleKurvContext"
 import { createProducts, faker } from "@/features/cart/createCart"
 import Card from "@/components/Card"
 import { useEffect, useState } from "react"
+import { ProductType } from "@/features/cart/types"
 
 export default function Home() {
   const fakeproducts = Array.from(createProducts({count: 5, faker}).values());
@@ -18,9 +19,15 @@ export default function Home() {
     setProducts(prev => prev.filter(res => res.id !== id));
   }
   useEffect(()=>{
-    setProducts(fakeproducts);
-    console.log(fakeproducts);
-    
+  //  setProducts(fakeproducts);
+  //  console.log(fakeproducts);
+    const getProducts = async ()=>{
+      const response = await fetch("/api/products",{method: "get"});
+      const result = await (response.json()) as {data: ProductType[]}
+      setProducts(result.data);
+      console.log(result);
+    }
+    getProducts();
     //products?.forEach((item)=>console.log(item.id))
   },[])
 
