@@ -12,7 +12,7 @@ const CartItems = ({cart}:any) => {
         return  <article key={item.id} className="flex justify-around">
         <button type="button">+</button>
         <button type="button">-</button>
-        <span>22</span>
+        <span>1</span>
         <p>{`${item.title}(${item.price},-)`}</p>
         <button type="button">X</button>
       </article>

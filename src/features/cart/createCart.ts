@@ -3,7 +3,7 @@ import type {Faker, CreateProductsType} from './types'
 //fake title, categories, prices 
 const fakeCategories: string[] = ["ART", "BOOK", "HARDWARE"]
 const fakePrices: number[] = [455,299,350,100,150,120,500,420,399]
-const fakeTitle: string[] = ["eple","godteri","na'na","iphone 2","te","kaffee"];
+const fakeTitle: string[] = ["eple","godteri","na'na","iphone 2","te","kaffee","chips","kanin"];
 
 //random lorem for description. i got this function from chatGTP
 const generateRandomLoremIpsum = (length:number) => {
