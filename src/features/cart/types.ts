@@ -1,9 +1,12 @@
+//Types for generating random products
 export type ProductType = {
     id: string
     title: string
     category: string
     description: string
+    quantity: number
     price: number
+    initPrice: number
 }
 
 export type Faker = {
@@ -23,4 +26,12 @@ export type Faker = {
   export type CreateProductsType = (
     params: CreateProductParams,
   ) => Map<string, ProductType>
+
+  export type CartType = {
+    id: string,
+    quantity: number,
+    title: string,
+    price: number
+    initPrice: number
+  }
   

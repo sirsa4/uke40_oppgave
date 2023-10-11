@@ -58,12 +58,17 @@ const createProducts: CreateProductsType = ({existingProducts,count,faker})=>{
       throw new Error("there are no products")
     }
     for (let i = 0; i < count; i++) {
+      //created to have consistent starting price for each product.
+      //this is that initPrice is stays as starting price. This issue i had when increasing and decreasing product quanity. i was not getting correct calculation.
+      const startPrice = faker.price()
       const product = {
         id: faker.id(),
         title: faker.title(),
         category: faker.category(),
         description: faker.description(),
-        price: faker.price()
+        quantity: 1,
+        price: startPrice,
+        initPrice: startPrice
       };  
       products.set(`${product.title}`,product);
     }

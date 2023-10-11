@@ -1,18 +1,20 @@
+"use client"
 import React from "react"
 
-const CartItems = ({cart,deleteProduct}:any) => {
+const CartItems = ({cart,deleteProduct,increaseItem, price, setPrice}:any) => {
   
   
   return (
     <div className="flex flex-col gap-4">
       
-      {cart !== undefined && cart.length > 0? cart.map(item => {
+      {cart !== undefined && cart.length > 0? cart?.map(item => {
        //  console.log(item);
+       setPrice(item.price)
         
         return  <article key={item.id} className="flex justify-around">
-        <button type="button">+</button>
+        <button onClick={()=>increaseItem(item.id)} type="button">+</button>
         <button type="button">-</button>
-        <span>1</span>
+        <span>{item.quantity}</span>
         <p>{`${item.title}(${item.price},-)`}</p>
         <button type="button" onClick={()=>deleteProduct(item.id)}>X</button>
       </article>
