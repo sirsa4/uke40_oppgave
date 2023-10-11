@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 
-const CartItems = ({cart,deleteProduct,increaseItem, price, setPrice}:any) => {
+const CartItems = ({cart,deleteProduct,increaseItem,decreaseItem ,price, setPrice}:any) => {
   
   
   return (
@@ -13,7 +13,7 @@ const CartItems = ({cart,deleteProduct,increaseItem, price, setPrice}:any) => {
         
         return  <article key={item.id} className="flex justify-around">
         <button onClick={()=>increaseItem(item.id)} type="button">+</button>
-        <button type="button">-</button>
+        <button onClick={()=>decreaseItem(item.id)} type="button">-</button>
         <span>{item.quantity}</span>
         <p>{`${item.title}(${item.price},-)`}</p>
         <button type="button" onClick={()=>deleteProduct(item.id)}>X</button>

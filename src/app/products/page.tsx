@@ -44,10 +44,12 @@ export default function Home() {
 
 
   const decreaseItem = (id: string) =>{
-    //first get index of current item that is being increased
+    //this function is to decrease item quantity. it is copy of increaseItem() with small change of decreasing quaniity and stopping the count when quanity is at 1 so you can't go below that
     const currentItemIndex = cart.findIndex((product) => product.id === id); 
 
-    if(cart.length == 1){
+    if(cart[currentItemIndex].quantity === 1){
+      console.log("it is one!");
+      
       return
     }
     const newItem = {...cart[currentItemIndex]}
@@ -122,7 +124,7 @@ export default function Home() {
             return <Card key={product.id} {...product} onDelete={deleteProduct} sendToCart={sendToCart}  />
            })} 
           </Cards>
-         <Handlekurv cart={cart} deleteProduct={deleteProduct} totalPrice={totalPrice} increaseItem={increaseItem} price={price} setPrice={setPrice}  />
+         <Handlekurv cart={cart} deleteProduct={deleteProduct} totalPrice={totalPrice} increaseItem={increaseItem} decreaseItem={decreaseItem} price={price} setPrice={setPrice}  />
         </div>
         </HandleKurvContext>
       </div>
