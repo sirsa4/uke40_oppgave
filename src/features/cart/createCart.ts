@@ -70,7 +70,7 @@ const createProducts: CreateProductsType = ({existingProducts,count,faker})=>{
         price: startPrice,
         initPrice: startPrice
       };  
-      products.set(`${product.title}`,product);
+      products.set(`${product.id}`,product);
     }
     return products;
 }

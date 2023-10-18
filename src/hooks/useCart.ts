@@ -88,5 +88,7 @@ export const useCart = () => {
     totalPrice,
     increaseItem,
     buyItems,
+    decreaseItem,
+    sendToCart
   }
 }
