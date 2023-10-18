@@ -16,7 +16,7 @@ const Card = (props: ProductType) => {
 
 
   return (
-    <article className="shadow-5xl grid gap-4 rounded  border-[0.01px] border-solid border-black p-4">
+    <article className="shadow-5xl grid gap-4 rounded border-[0.01px] border-solid border-black p-4">
       <header className="flex justify-end p-3">
         <p>{category}</p>
       </header>

@@ -7,8 +7,9 @@ import Handlekurv from "@/components/Handlekurv"
 import HandleKurvContext from "@/context/HandleKurvContext"
 import { createProducts, faker } from "@/features/cart/createCart"
 import Card from "@/components/Card"
-import { SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { CartType, ProductType } from "@/features/cart/types"
+import { useCart } from "@/hooks/useCart"
 
 export default function Home() {
   //dummy used before api route was created
@@ -21,6 +22,8 @@ export default function Home() {
   //state for totall prices test
   const [totalPrice, setTotalPrice] = useState(0);
   const [price, setPrice] = useState(0);
+
+ // const {cart,deleteProduct,buyItems,increaseItem,price,setPrice,totalPrice} = useCart()
 
   const increaseItem = (id: string) =>{
     //first get index of current item that is being increased
@@ -38,7 +41,7 @@ export default function Home() {
     copyCartList[currentItemIndex] = newItem
  
 
-    setCart(copyCartList)
+    setCart(copyCartList);
    
   }
 
@@ -100,6 +103,7 @@ export default function Home() {
    //  console.log(product)
       if(product.id === item.id){
         console.log(`init: ${product.initPrice} - price: ${product.price}`)
+        isAlreadyInCart = true;
         return  
       }
     
@@ -110,6 +114,12 @@ export default function Home() {
    // setPrice(prev => prev.price * 2);
    // console.log(cart)
    
+   }
+
+   //function to log total price when clicking kjøp button
+   const buyItems = ()=>{
+      console.log(totalPrice);
+      
    }
 
 
@@ -124,7 +134,7 @@ export default function Home() {
             return <Card key={product.id} {...product} onDelete={deleteProduct} sendToCart={sendToCart}  />
            })} 
           </Cards>
-         <Handlekurv cart={cart} deleteProduct={deleteProduct} totalPrice={totalPrice} increaseItem={increaseItem} decreaseItem={decreaseItem} price={price} setPrice={setPrice}  />
+         <Handlekurv cart={cart} deleteProduct={deleteProduct} totalPrice={totalPrice} increaseItem={increaseItem} decreaseItem={decreaseItem} price={price} setPrice={setPrice} buyItem={buyItems}  />
         </div>
         </HandleKurvContext>
       </div>
