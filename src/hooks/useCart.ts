@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react"
 
 import { CartType, ProductType } from "@/features/cart/types"
@@ -76,8 +77,8 @@ export const useCart = () => {
   }
 
   //function to log total price when clicking kjøp button
-  const buyItems = () => {
-    console.log(totalPrice)
+  const buyItems = (price:number): void  => {
+    console.log(price)
   }
 
   return {

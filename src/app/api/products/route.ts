@@ -2,7 +2,7 @@ import { createProducts,faker } from "@/features/cart/createCart";
 import { NextResponse} from "next/server";
 
 export const GET = ()=>{
-    const response = createProducts({faker, count: 100})
+    const response = createProducts({faker, count: 10})
 
     return NextResponse.json(
         {data: Array.from(response.values())},

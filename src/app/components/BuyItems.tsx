@@ -1,11 +1,24 @@
-import React from 'react'
+"use client"
 
-const BuyItems = ({totalPrice,buyItems}:{totalPrice: number, buyItems: any}) => {
+import React from "react"
+
+const BuyItems = ({
+  totalPrice,
+  buyItems,
+}: {
+  totalPrice: number
+  buyItems: void
+}) => {
+  const showTotalPrice = (price: number) => {
+    console.log(price)
+  }
   return (
-    <div className="pl-4 py-2">
-    <p>{totalPrice}</p>
-    <button type="button" onClick={buyItems}>Kjøp</button>
-  </div>
+    <div className="py-2 pl-4">
+      <p>{totalPrice}</p>
+      <button type="button" onClick={() => showTotalPrice(totalPrice)}>
+        Kjøp
+      </button>
+    </div>
   )
 }
 
